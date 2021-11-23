@@ -1,4 +1,6 @@
+RUN BEFORE INSTALLING DOCKER SHIT
 curl -sSL https://get.docker.com/rootless | sh
+apt install -y uidmap
 ^ run as unprivileged
 
 or (idk if below works, just random command note taking)
