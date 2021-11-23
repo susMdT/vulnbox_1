@@ -1,0 +1,12 @@
+- hosts: localhost  
+  tasks:  
+  - name: Copy Files  
+   synchronize: src=/var/lib/tomcat9/webapps/ROOT/admin/dashboard dest=/opt/backups/files copy_links=yes  
+  - name: Server Backups  
+   archive:  
+    path: /opt/backups/files/  
+    dest: "/opt/backups/dbarchives/backup-{{ansible_date_time.date}}-{{ansible_date_time.time}}.gz"  
+  - name: Clean  
+   file:  
+    state: absent  
+    path: /opt/backups/files/  
