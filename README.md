@@ -1,7 +1,9 @@
 # vulnbox_1
 practice box
 some budget hackthebox 
-''' THE GENERAL PATH
+
+```
+THE GENERAL PATH
 Box 1 (Easy)
 
 Public facing wordpress site, vulnerable plugin https://www.exploit-db.com/exploits/39575 (LFI #1)
@@ -17,7 +19,7 @@ ansible crontab running as root, ansible editable by d (#7 too many privs on one
 alt route
 Running Drupal (accessible through box 1). Drupalgeddon (#)
 SUID executable that runs docker commands. Utilize path injection. (source code on the side). (#9)
-'''
+```
 
 These boxes are separated into two phases, an easy initial phase and then a harder later phase.
 Basic enumeration will show the attack that wordpress is running and that there is a password-locked /dev directory that requires non-default credentials. Additional enumeration will reveal a vulenrable wordpress plugin that grants LFI, and reading the wp-config.php file will disclose credentials for a remote mysql database. Those credentials are shared with the /dev directory which allows for file upload, and the files can then be access from /uploads. With an initial foothold, enumeration reveals that python has capabilities set and root is obtained easily. To pivot into the second box, the attacker has to loot the box they rooted. A locally running mail service with default credentials discloses an email that has credentials for admin on drupal and a mysql root user.
