@@ -1,10 +1,18 @@
 version: '3.1'
 
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 10.10.10.0/16
 services:
 
   db:
     image: prod
     ports:
       - "3306:3306"
-    restart: always
+    networks:
+      static-network:
+        ipv4_address: 10.10.10.10
 
+    restart: always
