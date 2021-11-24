@@ -1,5 +1,4 @@
 #!/bin/bash
-mysql -u root 
 mysql -u root --password=NigelGerald454 -e 'create database drupalbase;'
 mysql -u root --password=NigelGerald454 -e 'create database wordpress;'
 mysql -u root --password=NigelGerald454 -e 'create user wpuser identified by "bruh";'
