@@ -18,5 +18,5 @@ services:
     command: mysql -u root --password=NigelGerald454 -e 'grant all privileges on wordpress.* to wpuser@localhost;'
     command: mysql -u root --password=NigelGerald454 -e 'create user drupaluser@localhost identified by "drewpeacock";' 
     command: mysql -u root --password=NigelGerald454 -e "grant all privileges on drupalbase.* to drupaluser@localhost;"
-
+    command: systemctl start mariadb
     restart: always
