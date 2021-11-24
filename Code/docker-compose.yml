@@ -3,20 +3,31 @@ version: '3.1'
 services:
 
   db:
-    image: mariadb:10.5.13
+    image: prod
+    #image: mariadb:10.5.13
     ports:
-      - 3306:3306
-    environment:
-      MARIADB_ROOT_PASSWORD: NigelGerald454
+      - "3306:3306"
       #- MARIADB_USER=wpuser 
       #- MARIADB_PASSWORD=bruh
-      MARIADB_DATABASE: wordpress
+      #MARIADB_DATABASE: wordpress
       #- MARIADB_USER=drupaluser 
       #- MARIADB_PASSWORD=drewpeacock
-      MARIADB_DATABASE: drupalbase
-    command: mysql -u root --password=NigelGerald454 -e 'create user wpuser@localhost identified by "bruh";'
-    command: mysql -u root --password=NigelGerald454 -e 'grant all privileges on wordpress.* to wpuser@localhost;'
-    command: mysql -u root --password=NigelGerald454 -e 'create user drupaluser@localhost identified by "drewpeacock";' 
-    command: mysql -u root --password=NigelGerald454 -e "grant all privileges on drupalbase.* to drupaluser@localhost;"
-    command: service mariadb start
+      #MARIADB_DATABASE: drupalbase
     restart: always
+    #command: /etc/init.d/mariadb start
+    #command: mysql -u root --password=NigelGerald454 -e 'create user wpuser@localhost identified by "bruh";'
+    #command: mysql -u root --password=NigelGerald454 -e 'grant all privileges on wordpress.* to wpuser@localhost;'
+    #command: mysql -u root --password=NigelGerald454 -e 'create user drupaluser@localhost identified by "drewpeacock";' 
+    #command: mysql -u root --password=NigelGerald454 -e "grant all privileges on drupalbase.* to drupaluser@localhost;"
+    #command: service mariadb start
+    
+
+########################################ENTRY POINT################################################################
+#!/bin/bash
+mysql -u root 
+mysql -u root --password=NigelGerald454 -e 'create database drupalbase;'
+mysql -u root --password=NigelGerald454 -e 'create database wordpress;'
+mysql -u root --password=NigelGerald454 -e 'create user wpuser@localhost identified by "bruh";'
+mysql -u root --password=NigelGerald454 -e 'grant all privileges on wordpress.* to wpuser@localhost;'
+mysql -u root --password=NigelGerald454 -e 'create user drupaluser@localhost identified by "drewpeacock";' 
+mysql -u root --password=NigelGerald454 -e "grant all privileges on drupalbase.* to drupaluser@localhost;"
