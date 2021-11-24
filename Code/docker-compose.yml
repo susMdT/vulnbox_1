@@ -7,16 +7,16 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MARIADB_ROOT_PASSWORD=NigelGerald454
+      MARIADB_ROOT_PASSWORD=NigelGerald454
       #- MARIADB_USER=wpuser 
       #- MARIADB_PASSWORD=bruh
-      - MARIADB_DATABASE=wordpress
+      MARIADB_DATABASE=wordpress
       #- MARIADB_USER=drupaluser 
       #- MARIADB_PASSWORD=drewpeacock
-      - MARIADB_DATABASE=drupalbase
+      MARIADB_DATABASE=drupalbase
     command: mysql -u root --password=NigelGerald454 -e 'create user wpuser@localhost identified by "bruh";'
     command: mysql -u root --password=NigelGerald454 -e 'grant all privileges on wordpress.* to wpuser@localhost;'
     command: mysql -u root --password=NigelGerald454 -e 'create user drupaluser@localhost identified by "drewpeacock";' 
     command: mysql -u root --password=NigelGerald454 -e "grant all privileges on drupalbase.* to drupaluser@localhost;"
-    command: systemctl start mariadb
+    command: service mariadb start
     restart: always
