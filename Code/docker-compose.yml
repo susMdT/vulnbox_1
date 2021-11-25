@@ -4,15 +4,15 @@ networks:
   static-network:
     ipam:
       config:
-        - subnet: 10.10.10.0/16
+        - subnet: 45.45.45.0/16
 services:
 
   db:
-    image: prod
+    image: dev
     ports:
       - "3306:3306"
     networks:
       static-network:
-        ipv4_address: 10.10.10.10
-
+        ipv4_address: 45.45.45.45
+    command: rm /opt/setup.sh
     restart: always
